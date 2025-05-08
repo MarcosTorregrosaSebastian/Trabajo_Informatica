@@ -3,7 +3,7 @@
 #include <locale.h>
 #include <string.h>
 
-
+void inicioSesion(char usuario[], char contrasena[], char respuesta);
 
 void pedirCredenciales(char usuario[], char contrasena[]);
 
@@ -24,7 +24,18 @@ int main(){
     scanf(" %c", &respuesta);
     getchar(); // limpiar el buffer del salto de línea
 
-    if (respuesta == 's' || respuesta == 'S') {
+    inicioSesion(usuario,contrasena,respuesta);
+    
+    return 0;
+    
+    
+    
+};
+  
+void inicioSesion(char usuario[], char contrasena[],char respuesta){
+	
+	
+	if (respuesta == 's' || respuesta == 'S') {
         pedirCredenciales(usuario, contrasena);
         if (validarCredenciales(usuario, contrasena)) {
             printf("¡Inicio de sesión exitoso! Bienvenido %s\n", usuario);
@@ -36,10 +47,12 @@ int main(){
         guardarCredenciales(usuario, contrasena);
         printf("Usuario registrado con éxito.\n");
     }
-    
-    return 0;
-};
-    
+	
+}  
+  
+  
+  
+   
 void pedirCredenciales(char usuario[], char contrasena[]) {
     char buffer[100];
 
